@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import { createContext, useState } from 'react';
 import './App.css';
+import Crud1 from './Components/Crud1';
+import data1 from './Components/Data';
+import Router1 from './Components/Router1';
 
+const mycrud = createContext();
 function App() {
+  const [data, setData] = useState([])
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <mycrud.Provider value = {[data,setData]}>
+         <Router1 />
+      </mycrud.Provider>
+       
     </div>
   );
 }
-
+export {mycrud};
 export default App;
+
